@@ -91,14 +91,14 @@ if exist "C:\Program files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" 
 
 if exist "C:\Program files (x86)\Microsoft Visual Studio %VCVERSION%\VC\vcvarsall.bat" (
   if "%EPICS_HOST_ARCH:~0,11%" == "windows-x64" (
-REM -- express 2012 provides a 32->64 cross compiler, the full visual studio has both a cross and native compiler
-    if exist "C:\Program files (x86)\Microsoft Visual Studio %VCVERSION%\VC\bin\amd64\cl.exe" (
-	    @echo Using Visual Studio %VCVERSION% x64 native compiler
-        call "C:\Program files (x86)\Microsoft Visual Studio %VCVERSION%\VC\vcvarsall.bat" x64
-	) else (
+REM -- express provides a 32->64 cross compiler, the full visual studio has both a cross and native compiler
+REM    if exist "C:\Program files (x86)\Microsoft Visual Studio %VCVERSION%\VC\bin\amd64\cl.exe" (
+REM	    @echo Using Visual Studio %VCVERSION% x64 native compiler
+REM        call "C:\Program files (x86)\Microsoft Visual Studio %VCVERSION%\VC\vcvarsall.bat" x64
+REM	) else (
 	    @echo Using Visual Studio %VCVERSION% x64 cross compiler
         call "C:\Program files (x86)\Microsoft Visual Studio %VCVERSION%\VC\vcvarsall.bat" x86_amd64
-	)
+REM	)
   )
   if "%EPICS_HOST_ARCH:~0,9%" == "win32-x86" (
 	 @echo Using Visual Studio %VCVERSION% x86 native compiler
