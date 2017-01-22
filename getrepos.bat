@@ -3,10 +3,10 @@ setlocal
 set "PATH=C:\Program Files\Git\bin;%~dp0utils\darcs;%PATH%"
 
 if exist "epics-base" (
-rem    rd /q /s epics-base
+    rd /q /s epics-base
 )
 @echo Getting EPICS %EPICS_VER%
-rem git clone --quiet --branch=R%EPICS_VER% --single-branch https://github.com/epics-base/epics-base
+git clone --quiet --branch=R%EPICS_VER% --single-branch https://github.com/epics-base/epics-base
 REM curl -fsS -o epics_base.tar.gz https://www.aps.anl.gov/epics/download/base/baseR3.14.12.6.tar.gz
 
 if exist "seq" (
