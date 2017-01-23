@@ -3,7 +3,12 @@ setlocal
 copy /y files\epics-startup-win32.bat epics-base\startup\win32.bat
 
 set "MYBASE=%~dp0epics-base"
-set CYGPATH_EXE=c:\cygwin64\bin\cygpath.exe
+
+if "%EPICS_HOST_ARCH:~0,13%" == "cygwin-x86_64" (
+    set CYGPATH_EXE=c:\cygwin64\bin\cygpath.exe
+) else (
+    set CYGPATH_EXE=c:\cygwin\bin\cygpath.exe
+)
 
 REM need to do this is separate secion or get expansion issues
 if "%EPICS_HOST_ARCH:~0,6%" == "cygwin" (

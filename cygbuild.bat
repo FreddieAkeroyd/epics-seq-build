@@ -1,7 +1,13 @@
 @echo off
 setlocal
 set "PATH=%~dp0utils\re2c;%PATH%"
-set CYGPATH_EXE=c:\cygwin64\bin\cygpath.exe
+if "%EPICS_HOST_ARCH:~0,13%" == "cygwin-x86_64" (
+    set CYGPATH_EXE=c:\cygwin64\bin\cygpath.exe
+	set CYGBASH_EXE=c:\cygwin64\bin\bash.exe
+) else (
+    set CYGPATH_EXE=c:\cygwin\bin\cygpath.exe
+	set CYGBASH_EXE=c:\cygwin\bin\bash.exe
+)
 for /F "usebackq" %%I in (`%CYGPATH_EXE% %~dp0build.sh`) do SET BUILDCYG=%%I
 for /F "usebackq" %%I in (`%CYGPATH_EXE% %~dp0`) do SET MYDIRCYG=%%I
-c:\cygwin64\bin\bash.exe --login %BUILDCYG% %MYDIRCYG%
+%CYGBASH_EXE% --login %BUILDCYG% %MYDIRCYG%
