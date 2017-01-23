@@ -22,8 +22,8 @@ if "%EPICS_HOST_ARCH:~0,6%" == "cygwin" (
 if "%EPICS_HOST_ARCH:~0,6%" == "cygwin" (
     echo EPICS_BASE=%MYBASECYG%>configure\EPICS_BASE.%EPICS_HOST_ARCH%
     echo EPICS_BASE=%MYBASECYG%>>seq\configure\RELEASE
-    REM if you need to add packages, i think this is the way
-    %CYGSETUP% -qnNdO -R %CYGDIR:\=/% -s http://cygwin.mirror.constant.com -l %CYGDIR:\=/%/var/cache/setup -P libreadline-devel
+    REM the location of "setup.exe" and cache directory here is for current Appveyor images
+    %CYGSETUP% -qnNdO -R %CYGDIR:\=/% -s http://cygwin.mirror.constant.com -l %CYGDIR:\=/%/var/cache/setup -P libreadline-devel -P libncursesw-devel -P libncurses-devel
 ) else (
     echo EPICS_BASE=%MYBASE:\=/%>configure\EPICS_BASE.%EPICS_HOST_ARCH%
     echo EPICS_BASE=%MYBASE:\=/%>>seq\configure\RELEASE

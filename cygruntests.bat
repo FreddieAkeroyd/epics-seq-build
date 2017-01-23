@@ -1,5 +1,6 @@
 @echo off
 setlocal
+call cygsetpaths.bat
 if "%EPICS_HOST_ARCH:~0,13%" == "cygwin-x86_64" (
     set CYGPATH_EXE=c:\cygwin64\bin\cygpath.exe
 	set CYGBASH_EXE=c:\cygwin64\bin\bash.exe

@@ -9,5 +9,5 @@ export EPICS_CA_AUTO_BEACON_ADDR_LIST=NO
 echo EPICS_CA_ADDR_LIST=$EPICS_CA_ADDR_LIST
 cd $1
 cd seq
-make -s runtests
+make runtests
 cd ..
