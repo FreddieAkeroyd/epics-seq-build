@@ -10,4 +10,4 @@ if "%EPICS_HOST_ARCH:~0,13%" == "cygwin-x86_64" (
 )
 for /F "usebackq" %%I in (`%CYGPATH_EXE% %~dp0runtests.sh`) do SET RUNTESTSCYG=%%I
 for /F "usebackq" %%I in (`%CYGPATH_EXE% %~dp0`) do SET MYDIRCYG=%%I
-%CYGBASH_EXE% --login %RUNTESTSCYG% %MYDIRCYG%
+%CYGBASH_EXE% --login %RUNTESTSCYG% %MYDIRCYG% < NUL
