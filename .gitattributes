@@ -6,3 +6,4 @@
 *.exe binary
 *.dll binary
 *.txt text
+*.yml text

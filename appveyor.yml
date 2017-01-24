@@ -1,0 +1,25 @@
+version: 1.0.{build}
+max_jobs: 1
+init:
+- cmd: git config --global core.autocrlf true
+environment:
+  matrix:
+  - EPICS_HOST_ARCH: windows-x64
+    EPICS_VER: 3.14.12.6
+  - EPICS_HOST_ARCH: windows-x64
+    EPICS_VER: 3.15.5
+  - EPICS_HOST_ARCH: cygwin-x86
+    EPICS_VER: 3.14.12.6
+  - EPICS_HOST_ARCH: cygwin-x86
+    EPICS_VER: 3.15.5
+  - EPICS_HOST_ARCH: cygwin-x86_64
+    EPICS_VER: 3.14.12.6
+  - EPICS_HOST_ARCH: cygwin-x86_64
+    EPICS_VER: 3.15.5
+install:
+- cmd: apv_install.bat
+build_script:
+- cmd: build.bat
+test_script:
+- cmd: runtests.bat
+

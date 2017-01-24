@@ -12,6 +12,7 @@ export EPICS_CA_AUTO_ADDR_LIST=NO
 export EPICS_CA_AUTO_BEACON_ADDR_LIST=NO
 echo EPICS_CA_ADDR_LIST=${EPICS_CA_ADDR_LIST}
 cd $1
+# tests hang if we do not launch caRepeater separately
 nohup ./epics-base/bin/${EPICS_HOST_ARCH}/caRepeater.exe < /dev/null > /dev/null 2>&1 &
 cd seq
 nohup make runtests < /dev/null
