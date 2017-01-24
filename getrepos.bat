@@ -1,14 +1,17 @@
 @echo off
 setlocal
 set "PATH=C:\Program Files\Git\bin;%~dp0utils\darcs;%PATH%"
-
+if "%EPICS_HOST_ARCH:~0,6%" == "cygwin" (
+    set CLONEOPTS=--config core.autocrlf=input --config core.eol=lf
+)
+REM goto SEQ
 if exist "epics-base" (
     rd /q /s epics-base
 )
 @echo Getting EPICS %EPICS_VER%
-git clone --quiet --branch=R%EPICS_VER% --single-branch https://github.com/epics-base/epics-base
+git clone %CLONEOPTS% --quiet --branch=R%EPICS_VER% --single-branch https://github.com/epics-base/epics-base
 REM curl -fsS -o epics_base.tar.gz https://www.aps.anl.gov/epics/download/base/baseR3.14.12.6.tar.gz
-
+:SEQ
 if exist "seq" (
     rd /q /s seq
 )
