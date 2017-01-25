@@ -6,7 +6,12 @@ if "%EPICS_HOST_ARCH:~0,6%" == "cygwin" (
     goto :EOF
 )
 
-call setpaths.bat
+if "%EPICS_HOST_ARCH:~0,17%" == "windows-x64-mingw" (
+    call mingwsetpaths.bat
+) else (
+    call setpaths.bat
+)
+
 set MYIP=127.0.0.1
 for /f "usebackq tokens=2 delims=:" %%f in (`ipconfig ^| findstr /c:"IPv4 Address" ^| findstr 130.246.`) do (
     set MYIP=%%f

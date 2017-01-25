@@ -7,7 +7,11 @@ if "%EPICS_HOST_ARCH:~0,6%" == "cygwin" (
     goto :EOF
 )
 
-call setpaths.bat
+if "%EPICS_HOST_ARCH:~0,17%" == "windows-x64-mingw" (
+    call mingwsetpaths.bat
+) else (
+    call setpaths.bat
+)
 
 cd epics-base
 make

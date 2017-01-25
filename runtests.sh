@@ -15,5 +15,5 @@ cd $1
 # tests hang if we do not launch caRepeater separately
 nohup ./epics-base/bin/${EPICS_HOST_ARCH}/caRepeater.exe < /dev/null > /dev/null 2>&1 &
 cd seq
-nohup make runtests < /dev/null
+make runtests
 cd ..
