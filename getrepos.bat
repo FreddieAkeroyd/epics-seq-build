@@ -3,6 +3,8 @@ setlocal
 set "PATH=C:\Program Files\Git\bin;%~dp0utils\darcs;%PATH%"
 if "%EPICS_HOST_ARCH:~0,6%" == "cygwin" (
     set CLONEOPTS=--config core.autocrlf=input --config core.eol=lf
+) else (
+    set CLONEOPTS=--config core.autocrlf=true --config core.eol=crlf
 )
 REM goto SEQ
 if exist "epics-base" (
