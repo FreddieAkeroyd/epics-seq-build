@@ -1,6 +1,12 @@
 @echo off
 setlocal
+set "PATH=%~dp0utils\sed;%PATH%"
+
 copy /y files\epics-startup-win32.bat epics-base\startup\win32.bat
+
+REM replace /nologo with -nologo etc. to help seq build with VS 2015 express
+@echo Patching CPP in CONFIG.win32-x86.win32-x86
+sed -i -e "s/^CPP =.*/CPP = cl -nologo -C -E/" epics-base\configure\os\CONFIG.win32-x86.win32-x86
 
 set "MYBASE=%~dp0epics-base"
 
